@@ -94,7 +94,12 @@ class _HomeViewState extends State<HomeView> {
                                 controller.selectedMode = SelectedMode.Color;
                               },
                               icon: Icon(Icons.palette)),
-                          IconButton(onPressed: () {}, icon: Icon(Icons.clear)),
+                          IconButton(
+                              onPressed: () {
+                                controller.showBottomList.value = false;
+                                controller.points.clear();
+                              },
+                              icon: Icon(Icons.clear)),
                         ],
                       ),
                       Visibility(
