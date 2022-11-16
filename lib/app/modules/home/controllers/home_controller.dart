@@ -19,8 +19,8 @@ class HomeController extends GetxController {
   Color selectedColor = Colors.black;
   Color pickerColor = Colors.black;
   RxDouble strokeWidth = 3.0.obs;
-  // RxList<DrawingPoints> points = RxList<DrawingPoints>([]);
-  List<DrawingPoints> points = [];
+  RxList<DrawingPoints> points = RxList<DrawingPoints>([]);
+  // List<DrawingPoints> points = [];
 
   RxBool showBottomList = false.obs;
   RxDouble opacity = 1.0.obs;

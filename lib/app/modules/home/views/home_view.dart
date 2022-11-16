@@ -267,12 +267,18 @@ class _HomeViewState extends State<HomeView> {
           );
         });
       },
-      child: CustomPaint(
-        painter: MyCustomPainter(pointsList: controller.points),
-        child: Container(
-          height: MediaQuery.of(context).size.height -
-              MediaQuery.of(context).padding.top,
-          width: MediaQuery.of(context).size.width,
+      child: Container(
+        child: CustomPaint(
+          painter: MyCustomPainter(
+              pointsList: controller.points,
+              canvasSize: Offset(MySize.screenWidth,
+                  MySize.screenHeight - AppBar().preferredSize.height)),
+          child: Container(
+            margin: EdgeInsets.only(top: AppBar().preferredSize.height),
+            height: MediaQuery.of(context).size.height -
+                AppBar().preferredSize.height,
+            width: MediaQuery.of(context).size.width,
+          ),
         ),
       ),
     );

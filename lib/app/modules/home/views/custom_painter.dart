@@ -1,10 +1,12 @@
 import 'dart:ui';
 
+import 'package:drawing_app/constants/sizeConstant.dart';
 import 'package:flutter/material.dart';
 
 class MyCustomPainter extends CustomPainter {
-  MyCustomPainter({required this.pointsList});
+  MyCustomPainter({required this.pointsList, required this.canvasSize});
   List<DrawingPoints> pointsList;
+  Offset canvasSize;
   List<Offset> offsetPoints = [];
   @override
   void paint(Canvas canvas, Size size) {
