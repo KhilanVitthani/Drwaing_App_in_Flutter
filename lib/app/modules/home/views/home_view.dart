@@ -26,10 +26,27 @@ class _HomeViewState extends State<HomeView> {
         return Obx(() {
           return Scaffold(
             appBar: AppBar(
+              leading: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    controller.points.clear();
+                  });
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "clear",
+                    style: TextStyle(
+                        fontSize: MySize.getHeight(18),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
+              ),
               title: const Text('Draw Your Thoughts'),
               actions: [
-                IconButton(
-                  onPressed: () {
+                GestureDetector(
+                  onTap: () {
                     controller.screenshotController
                         .capture(
                             delay: Duration(
@@ -39,7 +56,11 @@ class _HomeViewState extends State<HomeView> {
                       ShowCapturedWidget(context, value!, controller);
                     });
                   },
-                  icon: Icon(Icons.camera),
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: MySize.getWidth(10)),
+                    child: Icon(Icons.camera),
+                  ),
                 ),
               ],
               centerTitle: true,
@@ -66,40 +87,67 @@ class _HomeViewState extends State<HomeView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          IconButton(
-                              onPressed: () {
-                                if (controller.selectedMode ==
-                                    SelectedMode.StrokeWidth)
-                                  controller.showBottomList.value =
-                                      !controller.showBottomList.value;
-                                controller.selectedMode =
-                                    SelectedMode.StrokeWidth;
-                              },
-                              icon: Icon(Icons.radio_button_checked_sharp)),
-                          IconButton(
-                              onPressed: () {
-                                if (controller.selectedMode ==
-                                    SelectedMode.Opacity)
-                                  controller.showBottomList.value =
-                                      !controller.showBottomList.value;
-                                controller.selectedMode = SelectedMode.Opacity;
-                              },
-                              icon: Icon(Icons.opacity)),
-                          IconButton(
-                              onPressed: () {
-                                if (controller.selectedMode ==
-                                    SelectedMode.Color)
-                                  controller.showBottomList.value =
-                                      !controller.showBottomList.value;
-                                controller.selectedMode = SelectedMode.Color;
-                              },
-                              icon: Icon(Icons.palette)),
-                          IconButton(
-                              onPressed: () {
-                                controller.showBottomList.value = false;
-                                controller.points.clear();
-                              },
-                              icon: Icon(Icons.clear)),
+                          GestureDetector(
+                            onTap: () {
+                              if (controller.selectedMode ==
+                                  SelectedMode.StrokeWidth)
+                                controller.showBottomList.value =
+                                    !controller.showBottomList.value;
+                              controller.selectedMode =
+                                  SelectedMode.StrokeWidth;
+                            },
+                            child: Container(
+                                alignment: Alignment.center,
+                                height: MySize.getHeight(35),
+                                child: Icon(
+                                  Icons.album_outlined,
+                                  size: MySize.getHeight(25),
+                                )),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              if (controller.selectedMode ==
+                                  SelectedMode.Opacity)
+                                controller.showBottomList.value =
+                                    !controller.showBottomList.value;
+                              controller.selectedMode = SelectedMode.Opacity;
+                            },
+                            child: Container(
+                                alignment: Alignment.center,
+                                height: MySize.getHeight(35),
+                                child: Icon(
+                                  Icons.opacity,
+                                  size: MySize.getHeight(25),
+                                )),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              if (controller.selectedMode == SelectedMode.Color)
+                                controller.showBottomList.value =
+                                    !controller.showBottomList.value;
+                              controller.selectedMode = SelectedMode.Color;
+                            },
+                            child: Container(
+                                alignment: Alignment.center,
+                                height: MySize.getHeight(35),
+                                child: Icon(
+                                  Icons.palette,
+                                  size: MySize.getHeight(25),
+                                )),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              controller.showBottomList.value = false;
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: MySize.getHeight(35),
+                              child: Icon(
+                                Icons.clear,
+                                size: MySize.getHeight(25),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       Visibility(
