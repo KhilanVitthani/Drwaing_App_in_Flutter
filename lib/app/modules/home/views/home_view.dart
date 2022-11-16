@@ -25,6 +25,7 @@ class _HomeViewState extends State<HomeView> {
       builder: (controller) {
         return Obx(() {
           return Scaffold(
+            extendBodyBehindAppBar: true,
             appBar: AppBar(
               leading: GestureDetector(
                 onTap: () {
@@ -67,7 +68,9 @@ class _HomeViewState extends State<HomeView> {
             ),
             body: Screenshot(
               controller: controller.screenshotController,
-              child: drwaArea(context, controller),
+              child: Container(
+                child: drwaArea(context, controller),
+              ),
             ),
             bottomNavigationBar: Padding(
               padding: EdgeInsets.symmetric(
@@ -265,8 +268,12 @@ class _HomeViewState extends State<HomeView> {
         });
       },
       child: CustomPaint(
-        size: Size.infinite,
         painter: MyCustomPainter(pointsList: controller.points),
+        child: Container(
+          height: MediaQuery.of(context).size.height -
+              MediaQuery.of(context).padding.top,
+          width: MediaQuery.of(context).size.width,
+        ),
       ),
     );
   }
