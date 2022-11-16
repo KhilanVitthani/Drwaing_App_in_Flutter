@@ -9,6 +9,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.5
   get_it:
+  flutter_colorpicker:
+  screenshot: ^1.2.3
+  permission_handler:
+  image_gallery_saver:
+  path_provider:
   flutter: 
     sdk: flutter
 
